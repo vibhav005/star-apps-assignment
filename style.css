@@ -1,0 +1,272 @@
+/* ============ GLOBAL STYLES ============ */
+:root {
+  --loader-color: #1bb3e8; /* Default blue */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #e6f7ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.9s ease, color 1.2s ease;
+  padding: 20px;
+}
+
+/* ============ LAYOUT ============ */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* ============ UMBRELLA SECTION ============ */
+.umbrella-wrapper {
+  position: relative;
+  width: 400px;
+  max-width: 90vw;
+}
+
+#umbrellaImage {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* Logo (appears over umbrella) */
+.logo {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 2;
+}
+
+/* Loader (only during upload) */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  display: none;
+  animation: spin 1s linear infinite;
+  filter: drop-shadow(0 0 3px var(--loader-color));
+  fill: var(--loader-color);
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ============ CUSTOMIZER PANEL ============ */
+.customizer {
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+}
+
+.customizer h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.color-swatches {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  margin-top: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0 20px;
+  line-height: 1.6;
+}
+
+.upload-box {
+  position: relative;
+  display: inline-block;
+}
+
+.upload-btn {
+  background: #1bb3e8;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #149bc8;
+}
+
+#logoUpload {
+  display: none;
+}
+
+#fileInfo {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+
+/* Tablets (portrait and small landscape) */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .umbrella-wrapper {
+    width: 350px;
+  }
+
+  .customizer {
+    max-width: 500px;
+  }
+
+  .customizer h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .umbrella-wrapper {
+    width: 280px;
+  }
+
+  .logo {
+    width: 35%; /* Slightly larger for smaller umbrella */
+    bottom: 10%;
+  }
+
+  .loader {
+    width: 50px;
+    height: 50px;
+  }
+
+  .customizer h1 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .upload-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .swatch {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Extra small screens (very narrow phones, 320px–400px) */
+@media (max-width: 400px) {
+  .umbrella-wrapper {
+    width: 240px;
+  }
+
+  .customizer h1 {
+    font-size: 24px;
+  }
+
+  .upload-btn {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 15px;
+  }
+
+  .upload-btn img {
+    width: 18px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .swatch {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Large desktop / wide screens */
+@media (min-width: 1400px) {
+  .umbrella-wrapper {
+    width: 500px;
+  }
+
+  .customizer h1 {
+    font-size: 42px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
